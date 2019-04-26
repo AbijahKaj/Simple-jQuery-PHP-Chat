@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+Copyright 2019 Abijah.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+    <head>
+        <title>Simple Chatter</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css" >
+        <link rel="stylesheet" href="css/main.css" >
+    </head>
+    <body>
+        <div class="content col-sm-9">
+            <h1 id="title" class="h1">Hello, welcome to my online Chat System</h1>
+            <div class="feed">
+                
+            </div>
+            <form class="form" id="msgform" action="server/chat.php">
+                <textarea class="form-text" id="msg" name="msg"></textarea>
+                <input type="hidden" name="username" value="123456US" />
+                <input class="btn-primary" id="sendbtn" type="submit" value="Send" />
+            </form>
+        </div>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
