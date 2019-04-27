@@ -1,5 +1,5 @@
 /* 
- * Copyright 2019 Abijah.
+ * Copyright 2019 Abijah Kajabika.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,16 +28,17 @@ $(document).ready(function () {
                 var jsonData = JSON.parse(response);
                 if (jsonData.success == "1")
                 {
-                    popUpMSG(jsonData.msg);
+                    popUpMSG(jsonData);
                 } else
                 {
                     alert(jsonData.msg);
                 }
             }
         });
+        $('.card-body').animate({scrollTop: $('.card-body').height() + $('.card-body').scrollTop()}, 800);
     });
 });
-function popUpMSG(msg) {
-    var feed = $('body');
-    feed.append('<div class="message-block-receive"><div class="user">Me</div><div class="message">' + msg + '</div><div class="time">Just now</div></div>');
+function popUpMSG(data) {
+    var feed = $('.card-body');
+    feed.append('<div class="message-block-receive"><div class="user">Me</div><div class="message">' + data.msg + '</div><div class="time">' + data.date + '</div></div>');
 }

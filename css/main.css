@@ -1,5 +1,5 @@
 /*
-Copyright 2019 Abijah.
+Copyright 2019 Abijah Kajabika.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -38,7 +38,20 @@ body {
 }
 .message-block-receive .message{
     background: #bee5eb;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 20px;
 }
+.message-block-send .message{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 20px;
+    padding-left: 15px;
+}
+div#msgfeed {
+    height: 20em; 
+    overflow-x: hidden; 
+    overflow-x: auto; 
+    text-align:justify; 
+} 
 .user{
     font-weight: bold;
 }

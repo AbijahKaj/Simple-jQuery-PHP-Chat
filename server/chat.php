@@ -1,7 +1,7 @@
 <?php
 
 /* 
- * Copyright 2019 Abijah.
+ * Copyright 2019 Abijah Kajabika.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@
 
 if (isset($_POST['username']) && isset($_POST['msg'])) {
     $msg = htmlentities($_POST['msg']);
-    echo json_encode(array('success' => 1,'msg'=>$msg));
+    $date = date('D, d M Y H:i:s');
+    echo json_encode(array('success' => 1,'msg'=>$msg,'date' => $date));
 } else {
     $msg = "An error occured";
     echo json_encode(array('success' => 0,'msg'=>$msg));
