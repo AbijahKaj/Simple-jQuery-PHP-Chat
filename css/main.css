@@ -18,3 +18,36 @@ limitations under the License.
     Author     : Abijah
 */
 
+body {
+    padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+.message-block-send{
+    width: 15em;
+}
+.message-block-receive{
+    float: right;
+    padding: 0.5em;
+    margin: 0;
+    width: 15em;
+}
+.message-block-receive .message{
+    background: #bee5eb;
+}
+.user{
+    font-weight: bold;
+}
+.time{
+    font-style: italic;
+    font-size: 0.7em;
+}
+.message{
+    padding: 5px;
+    background: #f8d7da;
+    border-radius: 5px;
+}

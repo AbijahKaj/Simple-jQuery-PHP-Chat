@@ -37,7 +37,7 @@ $(document).ready(function () {
         });
     });
 });
-function popUpMSG(msg){
-    var feed = $('.feed');
-    feed.append("<h3>"+msg+"</h3>");
+function popUpMSG(msg) {
+    var feed = $('body');
+    feed.append('<div class="message-block-receive"><div class="user">Me</div><div class="message">' + msg + '</div><div class="time">Just now</div></div>');
 }
