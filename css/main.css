@@ -28,13 +28,13 @@ body {
     }
 }
 .message-block-send{
-    width: 15em;
+    width: 20em;
 }
 .message-block-receive{
     float: right;
     padding: 0.5em;
     margin: 0;
-    width: 15em;
+    width: 20em;
 }
 .message-block-receive .message{
     background: #bee5eb;
