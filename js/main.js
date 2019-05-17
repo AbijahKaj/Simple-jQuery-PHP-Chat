@@ -21,7 +21,7 @@ $(document).ready(function () {
         e.stopPropagation();
         $.ajax({
             type: "POST",
-            url: 'server/chat.php',
+            url: 'server/ajax.php?action=chat',
             data: $(this).serialize(),
             success: function (response)
             {
@@ -37,8 +37,33 @@ $(document).ready(function () {
         });
         $('.card-body').animate({scrollTop: $('.card-body').height() + $('.card-body').scrollTop()}, 800);
     });
+    $('#signup').submit(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $.ajax({
+            type: "POST",
+            url: 'server/ajax.php?action=signup',
+            data: $(this).serialize(),
+            success: function (response)
+            {
+                var jsonData = JSON.parse(response);
+                if (jsonData.success == "1")
+                {
+                    popUpMSG(jsonData);
+                } else
+                {
+                    alert(jsonData.message);
+                }
+            }
+        });
+    });
+    /**
+     * $.getJSON('server/ajax.php?action=get-status', function (result) {
+     if(result.connected == "1" && $( location ).attr("href").indexOf("index.html") == -1){
+     $( location ).attr("href", "home.html");
+     }});
+     */
 });
 function popUpMSG(data) {
-    var feed = $('.card-body');
-    feed.append('<div class="message-block-receive"><div class="user">Me</div><div class="message">' + data.msg + '</div><div class="time">' + data.date + '</div></div>');
+
 }

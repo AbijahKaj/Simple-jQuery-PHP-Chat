@@ -1,0 +1,11 @@
+CREATE TABLE `thoty`.`user` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `username` VARCHAR(50) NOT NULL , `name` VARCHAR(80) NOT NULL , `phone` INT(15) NOT NULL , `email` VARCHAR(200) NOT NULL , `pass` VARCHAR(65) NOT NULL , `lastonline` INT(11) NOT NULL , PRIMARY KEY (`id`), UNIQUE (`username`)) ENGINE = MyISAM;
+
+CREATE TABLE IF NOT EXISTS `chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from` int(11) NOT NULL,
+  `to` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `time` int(11) NOT NULL,
+  `status` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
