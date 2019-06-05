@@ -88,30 +88,57 @@ class Index {
     }
 
     private function runAction($action, array $extra = []) {
-
-        switch ($action) {
-            case 'signup':
-                $user = new User();
-                $response = $user->signup();
-                Utils::sendResponse($response);
-                break;
-            case 'logout':
-                Utils::logout();
-                break;
-            case '404':
-                Utils::sendResponse($extra);
-                break;
-            case '500':
-                Utils::sendResponse($extra);
-                break;
-            case 'get-status':
-                $response = array("connected" => Utils::isConnected());
-                Utils::sendResponse($response);
-                break;
-            default:
-                Utils::sendResponse(array('success' => 0,
-                    'message' => 'The action "' . $action . '" cannot be executed!'));
-                break;
+        if (Utils::isConnected()) {
+            switch ($action) {
+                case 'sendmsg':
+                    $chat = new Chat();
+                    break;
+                case 'getusers':
+                    $response = (new Chat())->getUsers();
+                    Utils::sendResponse($response);
+                    break;
+                //----------------------------------------UTILITIES
+                case 'logout':
+                    Utils::logout();
+                    break;
+                case '404':
+                    Utils::sendResponse($extra);
+                    break;
+                case '500':
+                    Utils::sendResponse($extra);
+                    break;
+                default:
+                    Utils::sendResponse(array('success' => 0,
+                        'message' => 'The action "' . $action . '" cannot be executed!'));
+                    break;
+            }
+        } else {
+            switch ($action) {
+                case 'signin':
+                    $user = new User();
+                    $response = $user->signin();
+                    Utils::sendResponse($response);
+                    break;
+                case 'signup':
+                    $user = new User();
+                    $response = $user->signup();
+                    Utils::sendResponse($response);
+                    break;
+                case '404':
+                    Utils::sendResponse($extra);
+                    break;
+                case '500':
+                    Utils::sendResponse($extra);
+                    break;
+                case 'get-status':
+                    $response = array("connected" => Utils::isConnected());
+                    Utils::sendResponse($response);
+                    break;
+                default:
+                    Utils::sendResponse(array('success' => 0,
+                        'message' => 'The action "' . $action . '" cannot be executed!'));
+                    break;
+            }
         }
     }
 

@@ -25,7 +25,7 @@ class Utils {
      */
     public static function sendResponse($response) {
         if (is_array($response)) {
-            array_push($response, array('hash' => isset($_SESSION['user']['hash']) ? $_SESSION['user']['hash'] : NULL));
+            $response['hash'] = isset($_SESSION['user']['hash']) ? $_SESSION['user']['hash'] : NULL;
             echo json_encode($response);
         }
         header("Content-type:application/json");

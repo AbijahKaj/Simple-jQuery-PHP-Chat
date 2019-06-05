@@ -46,13 +46,31 @@ $(document).ready(function () {
             data: $(this).serialize(),
             success: function (response)
             {
-                var jsonData = JSON.parse(response);
-                if (jsonData.success == "1")
+                if (response.success == "1")
                 {
-                    popUpMSG(jsonData);
+                    $( location ).attr("href", "home.html");
                 } else
                 {
-                    alert(jsonData.message);
+                    alert(response.message);
+                }
+            }
+        });
+    });
+    $('#signin').submit(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $.ajax({
+            type: "POST",
+            url: 'server/ajax.php?action=signin',
+            data: $(this).serialize(),
+            success: function (response)
+            {
+                if (response.success == "1")
+                {
+                    $( location ).attr("href", "home.html");
+                } else
+                {
+                    alert(response.message);
                 }
             }
         });

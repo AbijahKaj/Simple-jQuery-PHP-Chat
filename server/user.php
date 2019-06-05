@@ -30,8 +30,41 @@ class User {
         $this->db = new DB();
     }
 
+    public function signin($response = array()) {
+        if (Utils::isConnected()) {
+            $response['success'] = 1;
+            $response['message'] = "Already connected!";
+            return $response;
+        }
+        if (isset($_POST['username']) AND isset($_POST['pass'])) {
+            $username = htmlspecialchars($_POST['username'], ENT_QUOTES);
+            $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES);
+            if (preg_match('/^[a-zA-Z_]+$/i', $username)) {
+                $sql = "SELECT id FROM user WHERE username='$username' AND pass='$pass'";
+                $query = $this->db->query($sql);
+                $nb = $query->rowCount();
+                if (isset($nb) AND $nb <= 1) {
+                    $this->connectUser($query->fetch()['id']);
+                    $this->debug[] = 'User connected';
+                    $response['success'] = 1;
+                    $this->debug[] = 'User signed up succesfully';
+                    array_push($response, $this->debug);
+                    return $response;
+                } else {
+                    $this->debug[] = "UserName query error {$nb}";
+                }
+            } else {
+                $this->debug[] = "Wrong Username";
+            }
+        }
+        $response['success'] = 0;
+        $this->debug[] = 'Verify the form and try again later!';
+        array_push($response, $this->debug);
+        return $response;
+    }
+
     function signup($response = array()) {
-        if(Utils::isConnected()){
+        if (Utils::isConnected()) {
             $response['success'] = 0;
             $response['message'] = "You can't create an account and you're connected!";
             return $response;
